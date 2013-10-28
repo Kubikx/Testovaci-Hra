@@ -32,9 +32,7 @@ public class TestGui extends JFrame {
 
 
 	public TestGui(final JList<TestToken> tokens) {
-		TestToken t = new TestToken(Team.NoTeam, "kubik");
 		final DefaultListModel<TestToken> listModel = (DefaultListModel<TestToken>) tokens.getModel();
-		listModel.addElement(t);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -43,6 +41,7 @@ public class TestGui extends JFrame {
 		contentPane.setLayout(null);
 		
 		comboBox = new JComboBox<Team>();
+		comboBox.setEnabled(false);
 		comboBox.addItemListener(new ItemListener() {
 			boolean changedOrNo=true;
 			public void itemStateChanged(ItemEvent arg0) {

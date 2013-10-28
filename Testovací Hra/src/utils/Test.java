@@ -23,6 +23,8 @@ public class Test {
 	
 	public static void main(String[] args) {
 
+		TestToken t = new TestToken(Team.Hr·Ë1, "kubik");
+		listModel.addElement(t);
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
