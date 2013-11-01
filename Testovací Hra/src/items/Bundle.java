@@ -7,19 +7,39 @@ public class Bundle extends Item{
 	private DefaultListModel<Item> stored = new DefaultListModel<Item>();
 	public int capacity;//liters
 	public int amountFilled=0;
-	public int weightCapacity;//Kg
-	public int actualWeight=0; 
+	public int maximumLoad;//Kg
+	public int actualLoad=0; 
 	
 
 	
 	public Bundle(String N, int C, int W) {
 		super(N);
 		this.capacity = C;
-		this.weightCapacity=W;
+		this.maximumLoad=W;
 	}
 
+	
+	@Override
+	public String info(){
+		StringBuilder s = new StringBuilder(super.info());
+		s.append("\ncapacity: ");
+		s.append(capacity);
+		s.append("\namount filled: ");
+		s.append(amountFilled);
+		s.append("\nmaximum load: ");
+		s.append(maximumLoad);
+		s.append("\nactual load: ");
+		s.append(actualLoad);
+		return s.toString();	
+	}
+	public Bundle copy(){
+		Bundle b = new Bundle(this.name, this.capacity, this.maximumLoad);
+		b.capacity=this.capacity;
+		b.maximumLoad=this.maximumLoad;
+		return b;
+	}
 	public DefaultListModel<Item> getStored(){
 		return stored;
 	}
-	public final static Bundle backpack100l = new Bundle("backpack", 100, 10);
+	public static Bundle backpack100l = new Bundle("backpack", 100, 50);
 }

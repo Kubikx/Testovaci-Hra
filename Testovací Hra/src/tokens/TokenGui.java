@@ -1,6 +1,6 @@
 package tokens;
 
-import items.Bundle;
+import items.*;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -66,7 +66,10 @@ public class TokenGui extends JFrame {
 		equippedList = new JList(token.getEquipped());
 		equippedList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
+				equippedList.setToolTipText(((Item) equippedList.getSelectedValue()).info());
 				if(equippedList.getSelectedValue() instanceof Bundle){
+					equippedList.setToolTipText(((Bundle) equippedList.getSelectedValue()).info());
+					System.out.println(((Bundle) equippedList.getSelectedValue()).info());
 					bundleList.setVisible(true);
 					bundleList.setModel(((Bundle) equippedList.getSelectedValue()).getStored());
 					//System.out.println("pokus");
@@ -78,7 +81,7 @@ public class TokenGui extends JFrame {
 		});
 		scrollPanelForList.setViewportView(equippedList);
 		equippedList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+		equippedList.getToolTipText();
 		
 		scrollPanelForBundles = new JScrollPane((Component) null);
 		scrollPanelForBundles.setBounds(101, 50, 86, 130);
@@ -87,14 +90,15 @@ public class TokenGui extends JFrame {
 		bundleList = new JList();
 		bundleList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-					System.out.println(bundleList.getSelectedValue());
+					//System.out.println(bundleList.getSelectedValue());
 			}
 		});
 		bundleList.setVisible(false);
 		scrollPanelForBundles.setViewportView(bundleList);
-		
-
-		
+/*
+		bundleList.setToolTipText("pokus");
+		bundleList.getToolTipText();
+		*/
 
 	}
 
