@@ -1,50 +1,41 @@
-
-
 package utils;
+
+import items.ForTests;
 
 import java.awt.EventQueue;
 
-
-
-
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-
-import tokens.*;
-
+import tokens.Token;
+import tokens.TokenGui;
 
 
 public class Test {
 
-	static DefaultListModel<TestToken> listModel = new DefaultListModel<TestToken>();
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	static JList tokens = new JList(listModel);
+	static Token t1 = new Token();
+	static Token t2 = new Token();
+	public final ForTests test = new ForTests();
 	
+
 	public static void main(String[] args) {
-
-		TestToken t = new TestToken(Team.Hr·Ë1, "kubik");
-		listModel.addElement(t);
-
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					@SuppressWarnings("unchecked")/**            */
-					TestGui frame = new TestGui(tokens);
+					new CreateToken();
+					if(t1.getEquipped().equals(t2.getEquipped())){
+						System.out.println("Chyba");
+					}else{
+						System.out.println("WHAT?");
+					}
+					
+					TokenGui frame = new TokenGui(t1);
+					TokenGui frame2 = new TokenGui(t2);
 					frame.setVisible(true);
+					frame2.setVisible(true);
+					frame.setBounds(50, 50, 450, 300);
+					frame2.setBounds(500, 50, 450, 300);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		/*
-	    List<Team> list = Arrays.asList(Team.values());
-	    System.out.println(list);
-
-		System.out.println(new TestToken(Team.Hr·Ë1, "Kubik"));
-	    */
-		
-
 	}
-
 }
