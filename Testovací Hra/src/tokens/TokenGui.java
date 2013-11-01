@@ -1,6 +1,6 @@
 package tokens;
 
-import items.*;
+import items.Bundle;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -14,8 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class TokenGui extends JFrame {
 
@@ -52,7 +52,7 @@ public class TokenGui extends JFrame {
 		txtName = new JTextField();
 		txtName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(arg0);
+				nameChange();
 			}
 		});
 		txtName.setBounds(5, 20, 86, 20);
@@ -68,7 +68,7 @@ public class TokenGui extends JFrame {
 			public void valueChanged(ListSelectionEvent arg0) {
 				if(equippedList.getSelectedValue() instanceof Bundle){
 					bundleList.setVisible(true);
-					bundleList.setModel(((Bundle) equippedList.getSelectedValue()).stored);
+					bundleList.setModel(((Bundle) equippedList.getSelectedValue()).getStored());
 					//System.out.println("pokus");
 				}
 				else{
@@ -85,11 +85,28 @@ public class TokenGui extends JFrame {
 		contentPane.add(scrollPanelForBundles);
 				
 		bundleList = new JList();
+		bundleList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+					System.out.println(bundleList.getSelectedValue());
+			}
+		});
 		bundleList.setVisible(false);
 		scrollPanelForBundles.setViewportView(bundleList);
 		
 
 		
 
+	}
+
+
+
+
+	/**
+	 * 
+	 */
+	protected void nameChange() {
+		String name = txtName.getText();
+		this.setTitle(name);
+		token.setName(name);
 	}
 }

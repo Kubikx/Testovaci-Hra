@@ -10,20 +10,19 @@ import tokens.TokenGui;
 
 public class Test {
 
-	static Token t1 = new Token();
-	static Token t2 = new Token();
 	public final ForTests test = new ForTests();
-	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new CreateToken();
-					if(t1.getEquipped().equals(t2.getEquipped())){
+					//new CreateToken();
+					Token t1 = new Token();
+					Token t2 = new Token();
+					if(t1.getEquipped().equals(t2.getEquipped()) || t1.getEquipped() == t2.getEquipped()){//////////CHYBA!!!!!!!!!!!!
 						System.out.println("Chyba");
 					}else{
-						System.out.println("WHAT?");
+						System.out.println("WHAT? How it possible?");
 					}
 					
 					TokenGui frame = new TokenGui(t1);

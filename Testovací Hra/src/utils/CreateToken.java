@@ -16,5 +16,6 @@ public class CreateToken {
 		TokenGui t = new TokenGui(t1);
 		t.setVisible(true);
 		t.setBounds(50, 350, 450, 300);
+		t1.getEquipped().clear();
 	}
 }

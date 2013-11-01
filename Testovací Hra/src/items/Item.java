@@ -18,9 +18,9 @@ public class Item {
 		}
 	}
 	
-	@Override
+	/*@Override
 	public String toString(){
 		return name;
-	}
+	}*/
 	//public final static Item testStone = new Item("stone"+ForTests.a);
 }
