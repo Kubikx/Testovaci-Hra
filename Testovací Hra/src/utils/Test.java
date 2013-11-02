@@ -99,19 +99,19 @@ public class Test {
 	    			//System.out.println("ok");
 	    			tokens.add(t,new Token());
 	    	    	t++;
-	    		}else if(line.endsWith("Item")){
+	    		}/*else if(line.endsWith("Item")){
 	    			//System.out.println("ok");
 	    			items.add(i, new Item());
 	    			i++;
-	    		}
+	    		}*/
 	    		line = br.readLine();
 	    	}
 	    	String in = sb.toString();
-	    	System.out.println("load start___________________________________________________________________________________________________");
+//	    	System.out.println("load start___________________________________________________________________________________________________");
 	    	if(tc!=t){
 				//System.out.println(((Token) tokens.get(tc)).getName());
 		    	tokens.get(tc).load(in);
-				System.out.println(((Token) tokens.get(tc)).getName());
+				//System.out.println(((Token) tokens.get(tc)).getName());
 				frames.addElement(new TokenGui((Token) tokens.get(tc)));
 				//System.out.println(frames.lastElement().getName());
 				frames.lastElement().setVisible(true);
@@ -119,12 +119,12 @@ public class Test {
 				frames.lastElement().load();
 				posx+=450;
 	    		tc++;
-	    	}
+	    	}/*
 	    	if(ic!=i){
 		    	items.get(ic).load(in);
 	    		ic++;
-	    	}
-	    	System.out.println("load end___________________________________________________________________________________________________");
+	    	}*/
+//	    	System.out.println("load end___________________________________________________________________________________________________");
 	    	line = br.readLine();
 	    }
     	br.close();

@@ -8,12 +8,14 @@ import javax.swing.DefaultListModel;
 public class Bundle extends Item{
 	private DefaultListModel<Item> stored = new DefaultListModel<Item>();
 	public int capacity;//liters
-	public int amountFilled=0;
+	public double amountFilled=0;
 	public int maximumLoad;//Kg
-	public int actualLoad=0; 
+	public double actualLoad=0; 
 	
 
-	
+
+	public Bundle() {
+	}
 	public Bundle(String N, int C, int W) {
 		super(N);
 		this.capacity = C;
@@ -68,5 +70,32 @@ public class Bundle extends Item{
 			stored.get(i).save(out, p+"+ ");
 		}
 	}
+	@Override
+	public String load(String in) {
+		super.load(in);
+		capacity = Integer.parseInt(in.substring(in.indexOf("capacity:")+10, in.substring(in.indexOf("capacity:")+10).indexOf("\n")+in.indexOf("capacity:")+10));
+		amountFilled = Double.parseDouble(in.substring(in.indexOf("amountFilled:")+14, in.substring(in.indexOf("amountFilled:")+14).indexOf("\n")+in.indexOf("amountFilled:")+14));
+		maximumLoad = Integer.parseInt(in.substring(in.indexOf("maximumLoad:")+13, in.substring(in.indexOf("maximumLoad:")+13).indexOf("\n")+in.indexOf("maximumLoad:")+13));
+		actualLoad = Double.parseDouble(in.substring(in.indexOf("actualLoad:")+12, in.substring(in.indexOf("actualLoad:")+12).indexOf("\n")+in.indexOf("actualLoad:")+12));
+//		System.out.println(in.substring(0, in.indexOf("ID:")));
+		in =  in.substring(in.indexOf("contains:")+11);
+//		System.out.println(in.substring(0, in.indexOf("ID:")));
+		String preFix = in.substring(in.indexOf("Item"), in.indexOf("ID:"));
+		while(in.length()>10 && preFix.equals(in.substring(in.indexOf("Item"), in.indexOf("ID:")))){
+//			System.out.println(in);
+			if(in.indexOf("Bundle")<in.indexOf("Item") && in.indexOf("Bundle")>0){
+				stored.addElement(new Bundle());
+				in = stored.lastElement().load(in);
+			}else{
+				stored.addElement(new Item());
+				in = stored.lastElement().load(in);
+			}
+		}
+		return in;
+//		System.out.println("test point");
+//		System.out.println(in);
+		
+	}
+	
 	public static Bundle backpack100l = new Bundle("backpack", 100, 50);
 }

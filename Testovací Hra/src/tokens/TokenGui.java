@@ -73,7 +73,7 @@ public class TokenGui extends JFrame {
 				equippedList.setToolTipText(((Item) equippedList.getSelectedValue()).info());
 				if(equippedList.getSelectedValue() instanceof Bundle){
 					equippedList.setToolTipText(((Bundle) equippedList.getSelectedValue()).info());
-					System.out.println(((Bundle) equippedList.getSelectedValue()).info());
+//					System.out.println(((Bundle) equippedList.getSelectedValue()).info());
 					bundleList.setVisible(true);
 					bundleList.setModel(((Bundle) equippedList.getSelectedValue()).getStored());
 					//System.out.println("pokus");
@@ -123,7 +123,7 @@ public class TokenGui extends JFrame {
 	}
 	private void loadName(){
 		txtName.setText(token.getName());
-		System.out.println(token.getID()+"*******"+token.getName());
+		//System.out.println(token.getID()+"*******"+token.getName());
 		//System.out.println(token);
 	}
 	

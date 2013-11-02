@@ -1,0 +1,70 @@
+Token
+ID: 99
+name: Kubik
+equipped: 
+- Bundle Item
+- ID: 2
+- name: backpack
+- price: 0.0
+- weight: 0.0
+- capacity: 100
+- amountFilled: 0
+- maximumLoad: 50
+- actualLoad: 0
+- contains: 
+- + Item
+- + ID: 3
+- + name: stone
+- + price: 0.0
+- + weight: 0.0
+- Item
+- ID: 4
+- name: kámen
+- price: 0.0
+- weight: 0.0
+- Item
+- ID: 9
+- name: šutr
+- price: 0.0
+- weight: 0.0
+- Item
+- ID: 10
+- name: èepel
+- price: 0.0
+- weight: 0.0
+*
+Token
+ID: 1
+name: Hrac2
+equipped: 
+- Bundle Item
+- ID: 5
+- name: backpack
+- price: 0.0
+- weight: 0.0
+- capacity: 100
+- amountFilled: 0
+- maximumLoad: 50
+- actualLoad: 0
+- contains: 
+- + Item
+- + ID: 6
+- + name: stone
+- + price: 0.0
+- + weight: 0.0
+- + Item
+- + ID: 8
+- + name: knife
+- + price: 0.0
+- + weight: 0.0
+- Item
+- ID: 7
+- name: kamínek
+- price: 0.0
+- weight: 0.0
+*
+Token
+ID: 0
+name: Obluda
+equipped: 
+*

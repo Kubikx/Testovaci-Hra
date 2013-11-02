@@ -70,8 +70,15 @@ public class Item implements Saveable, Loadable {
 
 
 	@Override
-	public void load(String in) {
-		// TODO Auto-generated method stub
+	public String load(String in) {
+		ID = Integer.parseInt(in.substring(in.indexOf("ID:")+4, in.substring(in.indexOf("ID:")+4).indexOf("\n")+in.indexOf("ID:")+4));
+		name = in.substring(in.indexOf("name:")+6, in.substring(in.indexOf("name:")+6).indexOf("\n")+in.indexOf("name:")+6);
+		price = Double.parseDouble(in.substring(in.indexOf("price:")+7, in.substring(in.indexOf("price:")+7).indexOf("\n")+in.indexOf("price:")+7));
+		weight = Double.parseDouble(in.substring(in.indexOf("weight:")+8, in.substring(in.indexOf("weight:")+8).indexOf("\n")+in.indexOf("weight:")+8));
+		in =  in.substring(in.substring(in.indexOf("weight:")+8).indexOf("\n")+in.indexOf("weight:")+9);
+		return in;
+//		System.out.println("test point");
+//		System.out.println(in);
 		
 	}
 
