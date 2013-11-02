@@ -33,7 +33,7 @@ public class Item implements Saveable, Loadable {
 		return i;
 	}
 	public String info(){
-		StringBuilder s = new StringBuilder("\nID: ");
+		StringBuilder s = new StringBuilder("ID: ");
 		s.append(ID);
 		s.append("\nname: ");
 		s.append(name);

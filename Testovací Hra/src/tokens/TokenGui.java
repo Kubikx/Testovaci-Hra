@@ -20,6 +20,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import utils.Test;
+import javax.swing.JTextPane;
 
 public class TokenGui extends JFrame {
 
@@ -34,6 +35,7 @@ public class TokenGui extends JFrame {
 	private JScrollPane scrollPanelForBundles;
 	@SuppressWarnings("rawtypes")
 	private JList bundleList;
+	private JTextPane infoText;
 
 
 
@@ -70,6 +72,9 @@ public class TokenGui extends JFrame {
 		equippedList = new JList(token.getEquipped());
 		equippedList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
+				
+				infoText.setText(((Item) equippedList.getSelectedValue()).info());
+				
 				equippedList.setToolTipText(((Item) equippedList.getSelectedValue()).info());
 				if(equippedList.getSelectedValue() instanceof Bundle){
 					equippedList.setToolTipText(((Bundle) equippedList.getSelectedValue()).info());
@@ -94,6 +99,7 @@ public class TokenGui extends JFrame {
 		bundleList = new JList();
 		bundleList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
+				infoText.setText(((Item) equippedList.getSelectedValue()).info());
 					//System.out.println(bundleList.getSelectedValue());
 			}
 		});
@@ -108,6 +114,11 @@ public class TokenGui extends JFrame {
 		});
 		btnSave.setBounds(5, 228, 89, 23);
 		contentPane.add(btnSave);
+		
+		infoText = new JTextPane();
+		infoText.setBounds(197, 50, 172, 130);
+		contentPane.add(infoText);
+		
 /*
 		bundleList.setToolTipText("pokus");
 		bundleList.getToolTipText();
