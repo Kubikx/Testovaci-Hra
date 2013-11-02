@@ -1,6 +1,8 @@
 
 package items;
 
+import java.io.PrintWriter;
+
 import javax.swing.DefaultListModel;
 
 public class Bundle extends Item{
@@ -40,6 +42,31 @@ public class Bundle extends Item{
 	}
 	public DefaultListModel<Item> getStored(){
 		return stored;
+	}
+	@Override
+	public void save(PrintWriter out) {
+		super.save(out);
+		out.println("capacity: "+capacity);
+		out.println("amountFilled: "+amountFilled);
+		out.println("maximumLoad: "+maximumLoad);
+		out.println("actualLoad: "+actualLoad);
+		out.println("contains: ");
+		for(int i=0; stored.size()>i;i++){
+			stored.get(i).save(out, "+ ");
+		}
+	}
+
+	@Override
+	public void save(PrintWriter out, String p) {
+		super.save(out, p);
+		out.println(p+"capacity: "+capacity);
+		out.println(p+"amountFilled: "+amountFilled);
+		out.println(p+"maximumLoad: "+maximumLoad);
+		out.println(p+"actualLoad: "+actualLoad);
+		out.println(p+"contains: ");
+		for(int i=0; stored.size()>i;i++){
+			stored.get(i).save(out, p+"+ ");
+		}
 	}
 	public static Bundle backpack100l = new Bundle("backpack", 100, 50);
 }

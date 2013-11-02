@@ -1,11 +1,15 @@
 package items;
 
+import java.io.PrintWriter;
+
 import utils.IDList;
+import utils.Loadable;
+import utils.Saveable;
 
 
 
-public class Item {
-    private int ID;
+public class Item implements Saveable, Loadable {
+    protected int ID;
     protected String name;
     protected double price;
     protected double weight;
@@ -14,6 +18,8 @@ public class Item {
 	this.name = N;
 	this.ID=IDList.ItemID;
 	IDList.ItemID++;
+    }
+    public Item(){
     }
     
     
@@ -42,4 +48,31 @@ public class Item {
 	return /*ID+" "+*/name;
     }
 	public static Item stone = new Item("stone");
+
+	@Override
+	public void save(PrintWriter out) {
+		out.println("Item");
+		out.println("ID: "+ID);
+		out.println("name: "+name);
+		out.println("price: "+price);
+		out.println("weight: "+weight);
+	}
+
+
+	@Override
+	public void save(PrintWriter out, String p) {
+		out.println(p+"Item");
+		out.println(p+"ID: "+ID);
+		out.println(p+"name: "+name);
+		out.println(p+"price: "+price);
+		out.println(p+"weight: "+weight);
+	}
+
+
+	@Override
+	public void load(String in) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,11 +1,13 @@
 package tokens;
 
-import items.*;
+import items.Bundle;
+import items.Item;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -16,6 +18,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import utils.Test;
 
 public class TokenGui extends JFrame {
 
@@ -34,10 +38,10 @@ public class TokenGui extends JFrame {
 
 
 
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public TokenGui(Token t) {
 		token = t;
-		t = token;//*************************************** UMAZAT
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -95,6 +99,15 @@ public class TokenGui extends JFrame {
 		});
 		bundleList.setVisible(false);
 		scrollPanelForBundles.setViewportView(bundleList);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Test.save();
+			}
+		});
+		btnSave.setBounds(5, 228, 89, 23);
+		contentPane.add(btnSave);
 /*
 		bundleList.setToolTipText("pokus");
 		bundleList.getToolTipText();
@@ -105,9 +118,15 @@ public class TokenGui extends JFrame {
 
 
 
-	/**
-	 * 
-	 */
+	public void load(){
+		loadName();
+	}
+	private void loadName(){
+		txtName.setText(token.getName());
+		System.out.println(token.getID()+"*******"+token.getName());
+		//System.out.println(token);
+	}
+	
 	protected void nameChange() {
 		String name = txtName.getText();
 		this.setTitle(name);
